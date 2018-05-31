@@ -1,6 +1,6 @@
 # Install
-install.packages("fda")                                                             # Functional Data Analysis (Ramsay, et al.)
-install.packages("rainbow")                                                         # Rainbow Plots, Bagplots and Boxplots for Functional Data (Shang and Hyndman)
+# install.packages("fda")                                                             # Functional Data Analysis (Ramsay, et al.)
+# install.packages("rainbow")                                                         # Rainbow Plots, Bagplots and Boxplots for Functional Data (Shang and Hyndman)
 # Load packages
 library(fda)
 library(rainbow)
@@ -8,7 +8,7 @@ library(rainbow)
 rm(list = ls())                                                               	    # Remove objects from the environment
 
 ####### Reconstruction of functional curves (requires the "fda" package) #######
-load("C:/FDA/apps/El_Nino.RData")                                                   # Monthly sea surface temperatures from January 1950 to December 2006
+load("El_Nino.RData")                                                   # Monthly sea surface temperatures from January 1950 to December 2006
 #load("C:/FDA/apps/French_mortality.RData")                                         # Age-specific mortality rates and population for France from 1816 to 2006.
 
 X <- El_Nino  # French_mortality # El_Nino
