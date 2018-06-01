@@ -37,13 +37,13 @@ colnames(datos_mora) <- c("Mora_con_Espinas", "Mora_sin_Espinas",
 "Rango_temp_mes0", "Prec_acum_mes0", "Temperatura_Promed_mes1", 
 "Rango_temp_mes1", "Prec_acum_mes1", "Temperatura_Promed_mes2", 
 "Rango_temp_mes2", "Prec_acum_mes2", "Temperatura_Promed_mes3",
-"Rango_temp_mes3", "Prec_acum_mes2", "Rendimiento") 
+"Rango_temp_mes3", "Prec_acum_mes3", "Rendimiento") 
 
 
 
 #Particion
 set.seed(123)
-inTrain  <- createDataPartition(y=datos_mora$Yield, p=0.7, list=F)
+inTrain  <- createDataPartition(y=datos_mora$Rendimiento, p=0.7, list=F)
 training <- datos_mora[inTrain,]
 testing  <- datos_mora[-inTrain,]
 
@@ -59,16 +59,16 @@ ctrl <- expand.grid(size = c(2,4,6) ,decay = c(0.1,0.5,0.8) )
 
 
 #Entrenamiento
-model <- train(Yield~.,data=training_norm,method = "nnet",
+model <- train(Rendimiento~.,data=training_norm,method = "nnet",
                tuneGrid = ctrl, trControl = trainControl(method = "cv",number = 10),
                lineout =T)
 
 
 
-#Desempeño del modelo
+#DesempeÃ±o del modelo
 pred_val <- predict(model,testing_norm)
-postResample(pred_val,testing_norm$Yield)
-plot(pred_val,testing_norm$Yield,col="red",pch=19)
+postResample(pred_val,testing_norm$Rendimiento)
+plot(pred_val,testing_norm$Rendimiento,col="red",pch=19)
 abline(0,1,lty=2)
 
 
